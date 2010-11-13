@@ -1,17 +1,9 @@
 module Oink
-
-  def self.extended_active_record?
-    @oink_extended_active_record
-  end
-
-  def self.extended_active_record!
-    @oink_extended_active_record = true
-  end
-
+  
   module InstanceTypeCounter
     def self.included(klass)
       ActiveRecord::Base.send(:include, OinkInstanceTypeCounterInstanceMethods)
-
+      
       klass.class_eval do
         after_filter :report_instance_type_count
       end
