@@ -53,8 +53,10 @@ class Stinky
   end
   
   def self.record
-    @global ||= new
-    @global.install_on Class # TODO metaclass
+    unless @global
+      @global = new
+      @global.install_on Class # TODO metaclass
+    end
     @global.record
     yield
     @global.stop
