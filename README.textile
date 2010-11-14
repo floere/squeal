@@ -1,0 +1,46 @@
+h1. Squeal
+
+A simple object instantiation counter.
+
+Inspired by oink (http://github.com/noahd1/oink).
+I needed a non-rails one for my search engine project Picky (http://github.com/floere/picky), but oink did not fit well.
+
+Note: It reports cumulatively until @Squeal.reset@ is called.
+
+Only works on certain Ruby classes yet (not String, for example).
+
+h1. Examples
+
+h2. Installation
+
+  gem install squeal
+
+h2. On a single class.
+
+  require 'squeal'
+   
+  TestClass.squeal do
+    TestClass.new
+    TestClass.new
+    Object.new
+    String.new
+  end
+  TestClass.new
+   
+  Squeal.report # => 'TestClass: 2'
+
+h2. On multiple classes
+
+  require 'squeal'
+   
+  Squeal.squeal(Object, TestClass) do
+    TestClass.new
+    String.new
+    Object.new
+    TestClass.new
+    String.new
+  end
+  Object.new
+  TestClass.new
+   
+  Squeal.report # => 'Object: 1, TestClass: 2'
