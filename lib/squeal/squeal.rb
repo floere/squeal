@@ -27,7 +27,7 @@ class Squeal
     def reset_for klass
       install_on klass
       @counters ||= {}
-      @counters[klass] = 0
+      @counters[klass] ||= 0
       self
     end
     

@@ -53,5 +53,37 @@ describe Squeal do
     
     Squeal.report.should == ''
   end
+  it 'reports cumulatively until reset' do
+    Hash.new
+    TestClass.new
+    
+    Squeal.report.should == ''
+    
+    TestClass.squeal do
+      TestClass.new
+      Hash.new
+      TestClass.new
+      Object.new
+      Hash.new
+    end
+    
+    Squeal.report.should == 'TestClass: 2'
+    
+    Squeal.squeal(Object, TestClass) do
+      TestClass.new
+      String.new
+      Object.new
+      TestClass.new
+      String.new
+    end
+    Object.new
+    TestClass.new
+    
+    Squeal.report.should == 'Object: 1, TestClass: 2'
+    
+    Squeal.reset
+    
+    Squeal.report.should == ''
+  end
 
 end
