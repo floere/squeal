@@ -1,0 +1,4 @@
+h2. 1.0.0
+
+ * hanke: Squeal.squeal(SomeClass, SomeOtherClass) do, SomeClass.squeal do
+
