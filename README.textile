@@ -13,11 +13,11 @@ h1. Examples
 
 h2. Installation
 
-  gem install squeal
+@gem install squeal@
 
 h2. On a single class.
 
-```ruby
+<code><pre>
   require 'squeal'
   
   TestClass.squeal do
@@ -29,11 +29,11 @@ h2. On a single class.
   TestClass.new
   
   Squeal.report # => 'TestClass: 2'
-```
+</pre></code>
 
 h2. On multiple classes
 
-```ruby
+<code><pre>
   require 'squeal'
   
   # Aliased as Squeal.record
@@ -49,11 +49,11 @@ h2. On multiple classes
   TestClass.new
   
   Squeal.report # => 'Object: 1, TestClass: 2'
-```
+</pre></code>
 
 h2. Without a block
 
-```ruby
+<code><pre>
   require 'squeal'
   
   # Aliased as Squeal.squeal
@@ -72,4 +72,4 @@ h2. Without a block
   TestClass.new
   
   Squeal.report # => 'Object: 1, TestClass: 2'
-```
+</pre></code>
