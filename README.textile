@@ -17,8 +17,9 @@ h2. Installation
 
 h2. On a single class.
 
+```ruby
   require 'squeal'
-   
+  
   TestClass.squeal do
     TestClass.new
     TestClass.new
@@ -26,14 +27,16 @@ h2. On a single class.
     String.new
   end
   TestClass.new
-   
+  
   Squeal.report # => 'TestClass: 2'
+```
 
 h2. On multiple classes
 
+```ruby
   require 'squeal'
-   
-  # Aliased as Squeal.record
+  
+  # Aliased as Squeal.record
   #
   Squeal.squeal(Object, TestClass) do
     TestClass.new
@@ -44,14 +47,16 @@ h2. On multiple classes
   end
   Object.new
   TestClass.new
-   
+  
   Squeal.report # => 'Object: 1, TestClass: 2'
+```
 
 h2. Without a block
 
+```ruby
   require 'squeal'
-   
-  # Aliased as Squeal.squeal
+  
+  # Aliased as Squeal.squeal
   #
   Squeal.record Object, TestClass
   
@@ -65,5 +70,6 @@ h2. Without a block
   
   Object.new
   TestClass.new
-   
+  
   Squeal.report # => 'Object: 1, TestClass: 2'
+```
