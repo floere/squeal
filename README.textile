@@ -17,59 +17,54 @@ h2. Installation
 
 h2. On a single class.
 
-<code><pre>
-  require 'squeal'
-  
-  TestClass.squeal do
-    TestClass.new
-    TestClass.new
-    Object.new
-    String.new
-  end
+<pre><code>
+require 'squeal'
+
+TestClass.squeal do
   TestClass.new
-  
-  Squeal.report # => 'TestClass: 2'
-</pre></code>
+  TestClass.new
+  Object.new
+  String.new
+end
+TestClass.new
+
+Squeal.report # => 'TestClass: 2'</code></pre>
 
 h2. On multiple classes
 
-<code><pre>
-  require 'squeal'
-  
-  # Aliased as Squeal.record
-  #
-  Squeal.squeal(Object, TestClass) do
-    TestClass.new
-    String.new
-    Object.new
-    TestClass.new
-    String.new
-  end
+<pre><code>require 'squeal'
+
+# Aliased as Squeal.record
+#
+Squeal.squeal(Object, TestClass) do
+  TestClass.new
+  String.new
   Object.new
   TestClass.new
-  
-  Squeal.report # => 'Object: 1, TestClass: 2'
-</pre></code>
+  String.new
+end
+Object.new
+TestClass.new
+
+Squeal.report # => 'Object: 1, TestClass: 2'</code></pre>
 
 h2. Without a block
 
-<code><pre>
-  require 'squeal'
-  
-  # Aliased as Squeal.squeal
-  #
-  Squeal.record Object, TestClass
-  
-  TestClass.new
-  String.new
-  Object.new
-  TestClass.new
-  String.new
-  
-  Squeal.stop
-  
-  Object.new
-  TestClass.new
-  
-  Squeal.report # => 'Object: 1, TestClass: 2'
-</pre></code>
+<pre><code>require 'squeal'
+
+# Aliased as Squeal.squeal
+#
+Squeal.record Object, TestClass
+
+TestClass.new
+String.new
+Object.new
+TestClass.new
+String.new
+
+Squeal.stop
+
+Object.new
+TestClass.new
+
+Squeal.report # => 'Object: 1, TestClass: 2'</code></pre>
