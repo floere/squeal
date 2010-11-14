@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name = "squeal"
   s.version = "1.0.0"
   s.authors = ["Florian Hanke"]
-  s.date = "2010-11-13"
+  s.date = "2010-11-14"
   s.description = "Simple object instantiation recorder."
   s.email = "florian.hanke+squeal@gmail.com"
   s.extra_rdoc_files = ["README.textile"]
