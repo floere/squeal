@@ -17,8 +17,7 @@ h2. Installation
 
 h2. On a single class.
 
-<pre><code>
-require 'squeal'
+<pre><code>require 'squeal'
 
 TestClass.squeal do
   TestClass.new
