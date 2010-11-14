@@ -69,7 +69,7 @@ describe Squeal do
     
     Squeal.report.should == 'TestClass: 2'
     
-    Squeal.squeal(Object, TestClass) do
+    Squeal.record(Object, TestClass) do
       TestClass.new
       String.new
       Object.new
@@ -79,7 +79,7 @@ describe Squeal do
     Object.new
     TestClass.new
     
-    Squeal.report.should == 'Object: 1, TestClass: 2'
+    Squeal.report.should == 'Object: 1, TestClass: 4'
     
     Squeal.reset
     

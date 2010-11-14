@@ -13,17 +13,16 @@ class Squeal
   end
   
   class << self
-    # Record the given classes.
-    #
-    def squeal klass, *klasses, &block
-      record klass, *klasses, &block
-    end
     
+    # Increment the counter for the given class.
+    #
     def increment klass
       return unless @recording && @counters[klass]
       @counters[klass] += 1
     end
     
+    # Install and reset for the given class.
+    #
     def reset_for klass
       install_on klass
       @counters ||= {}
@@ -31,23 +30,36 @@ class Squeal
       self
     end
     
+    # Installs squeal on the given class if it isn't yet installed.
+    #
     def install_on klass
       klass.send :include, InitializeWrapper unless klass.include?(InitializeWrapper)
     end
     
+    # Record the given classes for the duration of the block.
+    #
     def record *klasses
       @recording = true
+      klasses.each { |klass| reset_for klass }
       if block_given?
-        reset
-        klasses.each { |klass| reset_for klass }
         yield
         stop
       end
       self
     end
+    alias squeal record
+    
+    # Stop recording.
+    #
     def stop
       @recording = false
     end
+    
+    # Returns a string with the current instantiation count.
+    #
+    # Example:
+    # * SomeClass: 2, SomeOtherClass: 10
+    #
     def report
       result = []
       @counters.each_pair do |klass, number|
@@ -55,6 +67,9 @@ class Squeal
       end
       result.sort.join(', ')
     end
+    
+    # Resets the counters.
+    #
     def reset
       @counters = {}
     end

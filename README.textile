@@ -33,6 +33,8 @@ h2. On multiple classes
 
   require 'squeal'
    
+  # Aliased as Squeal.record
+  #
   Squeal.squeal(Object, TestClass) do
     TestClass.new
     String.new
@@ -40,6 +42,27 @@ h2. On multiple classes
     TestClass.new
     String.new
   end
+  Object.new
+  TestClass.new
+   
+  Squeal.report # => 'Object: 1, TestClass: 2'
+
+h2. Without a block
+
+  require 'squeal'
+   
+  # Aliased as Squeal.squeal
+  #
+  Squeal.record Object, TestClass
+  
+  TestClass.new
+  String.new
+  Object.new
+  TestClass.new
+  String.new
+  
+  Squeal.stop
+  
   Object.new
   TestClass.new
    
